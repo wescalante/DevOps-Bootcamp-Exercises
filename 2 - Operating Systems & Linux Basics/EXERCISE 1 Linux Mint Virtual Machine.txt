@@ -1,0 +1,101 @@
+EXERCISE 1: Linux Mint Virtual Machine
+Create a Linux Mint Virtual Machine on your computer. Check the distribution, which package manager it uses (yum, apt, apt-get). Which CLI editor is configured (Nano, Vi, Vim). What software center/software manager it uses. Which shell is configured for your user.
+
+RESOLUTION
+---------------------------------------------------------------------------------------------------------------------------------------------
+Check the distribution
+
+wescalante@wescalante-VirtualBox:~$ uname -a
+Linux wescalante-VirtualBox 6.8.0-51-generic #52-Ubuntu SMP PREEMPT_DYNAMIC Thu Dec  5 13:09:44 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux
+
+wescalante@wescalante-VirtualBox:~$ cat /etc/os-release 
+NAME="Linux Mint"
+VERSION="22.1 (Xia)"
+ID=linuxmint
+ID_LIKE="ubuntu debian"
+PRETTY_NAME="Linux Mint 22.1"
+VERSION_ID="22.1"
+HOME_URL="https://www.linuxmint.com/"
+SUPPORT_URL="https://forums.linuxmint.com/"
+BUG_REPORT_URL="http://linuxmint-troubleshooting-guide.readthedocs.io/en/latest/"
+PRIVACY_POLICY_URL="https://www.linuxmint.com/"
+VERSION_CODENAME=xia
+UBUNTU_CODENAME=noble
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+which package manager it uses
+
+wescalante@wescalante-VirtualBox:~$ apt
+
+This is the Linux Mint "apt" command.
+
+This commands acts as a wrapper for the APT package manager and many other useful tools such as apt-get, apt-cache, apt-mark, dpkg, aptitude...etc.
+
+It is installed in /usr/local/bin/apt. To use the upstream apt command directly type /usr/bin/apt.
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+Which CLI editor is configured
+
+wescalante@wescalante-VirtualBox:~$ update-alternatives --display editor
+editor - auto mode
+  link best version is /bin/nano
+  link currently points to /bin/nano
+  link editor is /usr/bin/editor
+  slave editor.1.gz is /usr/share/man/man1/editor.1.gz
+  slave editor.da.1.gz is /usr/share/man/da/man1/editor.1.gz
+  slave editor.de.1.gz is /usr/share/man/de/man1/editor.1.gz
+  slave editor.fr.1.gz is /usr/share/man/fr/man1/editor.1.gz
+  slave editor.it.1.gz is /usr/share/man/it/man1/editor.1.gz
+  slave editor.ja.1.gz is /usr/share/man/ja/man1/editor.1.gz
+  slave editor.pl.1.gz is /usr/share/man/pl/man1/editor.1.gz
+  slave editor.ru.1.gz is /usr/share/man/ru/man1/editor.1.gz
+  slave editor.tr.1.gz is /usr/share/man/tr/man1/editor.1.gz
+/bin/ed - priority -100
+  slave editor.1.gz: /usr/share/man/man1/ed.1.gz
+/bin/nano - priority 40
+  slave editor.1.gz: /usr/share/man/man1/nano.1.gz
+/usr/bin/vim.tiny - priority 15
+  slave editor.1.gz: /usr/share/man/man1/vim.1.gz
+  slave editor.da.1.gz: /usr/share/man/da/man1/vim.1.gz
+  slave editor.de.1.gz: /usr/share/man/de/man1/vim.1.gz
+  slave editor.fr.1.gz: /usr/share/man/fr/man1/vim.1.gz
+  slave editor.it.1.gz: /usr/share/man/it/man1/vim.1.gz
+  slave editor.ja.1.gz: /usr/share/man/ja/man1/vim.1.gz
+  slave editor.pl.1.gz: /usr/share/man/pl/man1/vim.1.gz
+  slave editor.ru.1.gz: /usr/share/man/ru/man1/vim.1.gz
+  slave editor.tr.1.gz: /usr/share/man/tr/man1/vim.1.gz
+wescalante@wescalante-VirtualBox:~$ ls -l /usr/bin/vi
+lrwxrwxrwx 1 root root 20 Apr 20 03:20 /usr/bin/vi -> /etc/alternatives/vi
+wescalante@wescalante-VirtualBox:~$ ls -l /etc/alternatives/vi
+lrwxrwxrwx 1 root root 17 Apr 20 03:20 /etc/alternatives/vi -> /usr/bin/vim.tiny
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+What software center/software manager it uses
+
+wescalante@wescalante-VirtualBox:~$ compgen -c | grep -E 'mintinstall|gnome-software|plasma-discover|synaptic|flatpak|snap'
+casper-snapshot
+mintinstall
+mintinstall-update-pkgcache
+flatpak
+mintinstall-fp-handler
+mint-remove-flatpak
+casper-snapshot
+mintinstall
+mintinstall-update-pkgcache
+flatpak
+mintinstall-fp-handler
+mint-remove-flatpak
+wescalante@wescalante-VirtualBox:~$ dpkg -l | grep -E 'mintinstall|synaptic|gnome-software|plasma-discover'
+ii  mintinstall                                8.3.7                                      all          Software Manager
+wescalante@wescalante-VirtualBox:~$ which minstinstall
+wescalante@wescalante-VirtualBox:~$ mintinstall
+MintInstall: Detected system architecture: 'x86_64'
+MintInstall: Deleting old screenshots
+Mintinstall startup took 5838.431 ms
+MintInstall: Downloaded new reviews
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+Which shell is configured for your user
+
+wescalante@wescalante-VirtualBox:~$ env
+SHELL=/bin/bash
